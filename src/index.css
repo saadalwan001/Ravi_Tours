@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+.about-us {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
