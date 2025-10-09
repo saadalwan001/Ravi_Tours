@@ -2,11 +2,12 @@ import React, { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Button from "./../ui/Button.jsx";
 
-import img1 from "../../../public/Destination/Img1.jpg";
-import img2 from "../../../public/Destination/Img2.jpg";
-import img3 from "../../../public/Destination/Img3.jpg";
-import img4 from "../../../public/Destination/Img4.jpg";
+import img1 from "/Destination/Img1.jpg";
+import img2 from "/Destination/Img2.jpg";
+import img3 from "/Destination/Img3.jpg";
+import img4 from "/Destination/Img4.jpg";
 import img5 from "../../../public/Destination/Img5.jpg";
 import img6 from "../../../public/Destination/Img6.jpg";
 import img7 from "../../../public/Destination/Img7.jpg";
@@ -26,19 +27,28 @@ export default function DestinationSection() {
 
   const visibleImages = allImages.slice(startIndex, startIndex + 5);
 
-  // Swap functions
   const handleNext = () => {
     if (startIndex > 0) setStartIndex(startIndex - 1);
   };
+
   const handlePrev = () => {
     if (startIndex + 5 < allImages.length) setStartIndex(startIndex + 1);
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50 relative mb-[80px]">
-      {/* Arrows with more spacing */}
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative mb-[80px]">
+      {/* Heading and Description */}
+      <div className="text-center mb-12">
+        <h2 className="text-7xl font-bold text-gray-900 mb-3">Destinations</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto text-[20px]">
+          Discover the most beautiful places across Sri Lanka, from tropical beaches
+          and historic cities to misty hills and cultural landmarks.
+        </p>
+      </div>
+
+      {/* Navigation Arrows */}
       <button
-        onClick={handlePrev} // right now this moves forward
+        onClick={handlePrev}
         disabled={startIndex + 5 >= allImages.length}
         className={`absolute left-[-40px] top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white shadow-lg z-10 ${
           startIndex + 5 >= allImages.length
@@ -50,7 +60,7 @@ export default function DestinationSection() {
       </button>
 
       <button
-        onClick={handleNext} // now this moves backward
+        onClick={handleNext}
         disabled={startIndex === 0}
         className={`absolute right-[-40px] top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white shadow-lg z-10 ${
           startIndex === 0 ? "opacity-40 cursor-not-allowed" : "hover:bg-gray-100"
@@ -59,7 +69,7 @@ export default function DestinationSection() {
         <ChevronRight className="w-6 h-6 text-gray-800" />
       </button>
 
-      {/* Grid */}
+      {/* Image Grid */}
       <div className="grid grid-cols-4 grid-rows-2 gap-6">
         {visibleImages.map((img, index) => {
           const isBig = index === 0;
@@ -70,7 +80,7 @@ export default function DestinationSection() {
               className={`relative rounded-xl overflow-hidden shadow-lg ${
                 isBig ? "col-span-2 row-span-2" : ""
               }`}
-              whileHover={{ scale: 1.03 }} // subtle zoom on hover
+              whileHover={{ scale: 1.03 }}
             >
               <img
                 src={img.src}
@@ -80,9 +90,9 @@ export default function DestinationSection() {
                   isBig ? "h-96 md:h-[500px] object-cover" : "h-52 md:h-60 object-cover"
                 }`}
               />
-              {/* Hover overlay */}
+              {/* Hover Overlay */}
               <motion.div
-                className={`absolute bottom-0 w-full bg-black bg-opacity-70 text-white p-4 flex flex-col justify-end`}
+                className="absolute bottom-0 w-full bg-black bg-opacity-70 text-white p-4 flex flex-col justify-end"
                 initial={{ y: "100%" }}
                 whileHover={{ y: 0 }}
                 transition={{ duration: 0.1, ease: "easeInOut" }}
@@ -96,6 +106,11 @@ export default function DestinationSection() {
             </motion.div>
           );
         })}
+      </div>
+
+      {/* Button at the Bottom */}
+      <div className="flex justify-center mt-12">
+        <Button text="Explore More" link="/destinations" />
       </div>
     </section>
   );
