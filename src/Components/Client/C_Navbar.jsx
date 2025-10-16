@@ -9,8 +9,8 @@ const C_Navbar = () => {
 
   const menuItems = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Destinations", path: "/destinations" },
+    { name: "About Us", path: "/AboutUs" },
+    { name: "Destinations", path: "/Destination" },
     { name: "Packages", path: "/packages" },
     { name: "Contact", path: "/contact" },
   ];

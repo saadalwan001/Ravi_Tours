@@ -6,6 +6,8 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 
 //Importing Pages
 import Homepage from './Homepage';
+import AboutUs from './AboutUS/AboutUs.jsx';
+import Destination from './Destination/Destination.jsx';
 
 //Admin Related Imports
 
@@ -140,6 +142,8 @@ export default function routes() {
         {/* Open Pages */}
 
         <Route path='/' element={<Homepage/>}/>
+        <Route path='/AboutUs' element={<AboutUs/>}/>
+        <Route path='/Destination' element={<Destination/>}/>
 
     </Routes>
 
