@@ -11,8 +11,8 @@ const C_Navbar = () => {
     { name: "Home", path: "/" },
     { name: "About Us", path: "/AboutUs" },
     { name: "Destinations", path: "/Destination" },
-    { name: "Packages", path: "/packages" },
-    { name: "Contact", path: "/contact" },
+    { name: "Packages", path: "/All_Packages" },
+    
   ];
 
   useEffect(() => {

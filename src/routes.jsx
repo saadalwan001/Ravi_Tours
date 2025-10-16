@@ -8,6 +8,8 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 import Homepage from './Homepage';
 import AboutUs from './AboutUS/AboutUs.jsx';
 import Destination from './Destination/Destination.jsx';
+import Packages from '@/Packages/Packages.jsx';
+import Packages_Details from '@/Packages/PackageDetails.jsx'
 
 //Admin Related Imports
 
@@ -144,6 +146,9 @@ export default function routes() {
         <Route path='/' element={<Homepage/>}/>
         <Route path='/AboutUs' element={<AboutUs/>}/>
         <Route path='/Destination' element={<Destination/>}/>
+        <Route path='/All_Packages' element={<Packages/>}/>
+        <Route path="/Packages/:id" element={<Packages_Details/>}/>
+
 
     </Routes>
 
