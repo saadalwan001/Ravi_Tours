@@ -58,7 +58,7 @@ export default function WhyChooseUs() {
               guidance designed to make every moment of your trip seamless and
               extraordinary.
             </p>
-            <Button text="Read More" link="#about" className="mb-6" />
+            <Button text="Read More" link="/AboutUs" className="mb-6" />
           </motion.div>
 
           {/* Grid Images */}

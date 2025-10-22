@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import api from "@/utlis/axios.js"; 
+import Button from "@/Components/ui/Button.jsx"
 
 
 const MailForm = ({ packageTitle }) => {
@@ -59,7 +60,7 @@ const MailForm = ({ packageTitle }) => {
         Trip name: <span className="font-medium">{packageTitle}</span>
       </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form  id="myForm" onSubmit={handleSubmit} className="space-y-4">
         {/* Name */}
         <input
           type="text"
@@ -351,12 +352,9 @@ const MailForm = ({ packageTitle }) => {
         {status && <p className="text-sm text-red-500">{status}</p>}
 
         {/* Submit */}
-        <button
-          type="submit"
-          className="bg-[#1A5775] text-white font-medium px-6 py-2 rounded hover:text-[#D0D1D1] transition"
-        >
-          Send Email
-        </button>
+        
+
+        <Button text="Send Email" onClick={() => document.getElementById("myForm").requestSubmit()} className=""  />
       </form>
     </div>
   );

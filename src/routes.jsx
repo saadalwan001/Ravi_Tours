@@ -1,15 +1,15 @@
-import React from 'react'
-import {Routes, Route} from "react-router-dom";
-import ProtectedRoute from './ProtectedRoute.jsx';
-
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 //Importing Pages
-import Homepage from './Homepage';
-import AboutUs from './AboutUS/AboutUs.jsx';
-import Destination from './Destination/Destination.jsx';
-import Packages from '@/Packages/Packages.jsx';
-import Packages_Details from '@/Packages/PackageDetails.jsx'
+import Homepage from "./Homepage";
+import AboutUs from "./AboutUS/AboutUs.jsx";
+import Destination from "./Destination/Destination.jsx";
+import Packages from "@/Packages/Packages.jsx";
+import Packages_Details from "@/Packages/PackageDetails.jsx";
+import Location from "@/Destination/Location.jsx";
+import Contact from "@/Contact/Contact.jsx";
 
 //Admin Related Imports
 
@@ -24,136 +24,110 @@ import Admin_EditAttraction from "./Admin/Admin_Attraction_Edit.jsx";
 import Admin_Contact from "@/Admin/Admin_Contact_Page.jsx";
 import Admin_Profile from "@/Admin/Admin_Profile_Page.jsx";
 
-
-
-
 export default function routes() {
   return (
     <>
-    <Routes>
-    {/* Admin Related Routes */}
-
-    {/* Login Route (accessible only if not logged in) */}
-      <Route
-  path="/admin-login"
-  element={
-    !localStorage.getItem("admin_token") ? <Login /> : <Dashboard />
-  }
-/>
-
-
-      {/*Protected Route Section*/}
-      <Route
-        path="/admin-dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Package Management (cards) */}
-      <Route
-        path="/admin-packcards"
-        element={
-          <ProtectedRoute>
-            <Admin_Tour_Packge_Card />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Package Edit (cards) */}
-      <Route
-        path="/admin-editcards/:id"
-        element={
-          <ProtectedRoute>
-            <Admin_Edit_Tour_Package />
-          </ProtectedRoute>
-        }
-      />
-
-      {/*Attraction & Experienc adding page */}
-      <Route
-        path="/admin-attraction"
-        element={
-          <ProtectedRoute>
-            <Admin_AddAttraction />
-          </ProtectedRoute>
-        }
-      />
-
-      {/*Attraction & Experienc cards */}
-      <Route
-        path="/admin-attraction/cards"
-        element={
-          <ProtectedRoute>
-            <Admin_Attraction_Card />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Package Edit Attraction Cards */}
-      <Route
-        path="/admin-editattraction/:id"
-        element={
-          <ProtectedRoute>
-            <Admin_EditAttraction />
-          </ProtectedRoute>
-        }
-      />
-
-      {/*Contact Page */}
-      <Route
-        path="/admin-contact"
-        element={
-          <ProtectedRoute>
-            <Admin_Contact />
-          </ProtectedRoute>
-        }
-      />
-
-      {/*Profile Page */}
-      <Route
-        path="/admin-profile"
-        element={
-          <ProtectedRoute>
-            <Admin_Profile />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/admin-packages"
-        element={
-          <ProtectedRoute>
-            <A_package />
-          </ProtectedRoute>
-        }
-
-        
-      />
-      <Route path="*" element={<Homepage />} /> 
-// Or a NotFound component
-
-    
-
-    {/*admin realted Routes Ending points */}
-
-
-    
+      <Routes>
+        {/* Admin Related Routes */}
+        {/* Login Route (accessible only if not logged in) */}
+        <Route
+          path="/admin-login"
+          element={
+            !localStorage.getItem("admin_token") ? <Login /> : <Dashboard />
+          }
+        />
+        {/*Protected Route Section*/}
+        <Route
+          path="/admin-dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        {/* Package Management (cards) */}
+        <Route
+          path="/admin-packcards"
+          element={
+            <ProtectedRoute>
+              <Admin_Tour_Packge_Card />
+            </ProtectedRoute>
+          }
+        />
+        {/* Package Edit (cards) */}
+        <Route
+          path="/admin-editcards/:id"
+          element={
+            <ProtectedRoute>
+              <Admin_Edit_Tour_Package />
+            </ProtectedRoute>
+          }
+        />
+        {/*Attraction & Experienc adding page */}
+        <Route
+          path="/admin-attraction"
+          element={
+            <ProtectedRoute>
+              <Admin_AddAttraction />
+            </ProtectedRoute>
+          }
+        />
+        {/*Attraction & Experienc cards */}
+        <Route
+          path="/admin-attraction/cards"
+          element={
+            <ProtectedRoute>
+              <Admin_Attraction_Card />
+            </ProtectedRoute>
+          }
+        />
+        {/* Package Edit Attraction Cards */}
+        <Route
+          path="/admin-editattraction/:id"
+          element={
+            <ProtectedRoute>
+              <Admin_EditAttraction />
+            </ProtectedRoute>
+          }
+        />
+        {/*Contact Page */}
+        <Route
+          path="/admin-contact"
+          element={
+            <ProtectedRoute>
+              <Admin_Contact />
+            </ProtectedRoute>
+          }
+        />
+        {/*Profile Page */}
+        <Route
+          path="/admin-profile"
+          element={
+            <ProtectedRoute>
+              <Admin_Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin-packages"
+          element={
+            <ProtectedRoute>
+              <A_package />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<Homepage />} />
+        // Or a NotFound component
+        {/*admin realted Routes Ending points */}
         {/* Open Pages */}
-
-        <Route path='/' element={<Homepage/>}/>
-        <Route path='/AboutUs' element={<AboutUs/>}/>
-        <Route path='/Destination' element={<Destination/>}/>
-        <Route path='/All_Packages' element={<Packages/>}/>
-        <Route path="/Packages/:id" element={<Packages_Details/>}/>
-
-
-    </Routes>
-
-
-    
+        <Route path="/" element={<Homepage />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/Destination" element={<Destination />} />
+        <Route path="/All_Packages" element={<Packages />} />
+        <Route path="/Packages/:id" element={<Packages_Details />} />
+        <Route path="/Location/:id" element={<Location />} />
+        <Route path="/Contact" element={<Contact />} />
+      </Routes>
     </>
-  )
+  );
 }

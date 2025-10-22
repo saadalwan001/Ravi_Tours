@@ -1,17 +1,25 @@
 import React from "react";
-import { MapPin, Phone, Mail, Facebook, Instagram, Music } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
 
-
 export default function Footer() {
+  const quickLinks = [
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/AboutUs" },
+    { name: "Destinations", path: "/Destination" },
+    { name: "Packages", path: "/All_Packages" },
+    { name: "Contact", path: "/Contact" },
+  ];
+
   return (
-    <footer className="bg-gray-900 text-white py-16"> {/* increased padding for more breathing space */}
+    <footer className="bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
         {/* Column 1: Contact Details */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Contact Details</h3>
           <p className="font-medium mb-2">Ravi Tours</p>
-          
+
           <p className="flex items-center mb-2">
             <MapPin className="mr-2" size={18} />
             <a
@@ -23,7 +31,7 @@ export default function Footer() {
               123 Main Street, Colombo, Sri Lanka
             </a>
           </p>
-          
+
           <p className="flex items-center mb-2">
             <Phone className="mr-2" size={18} />
             <a
@@ -33,7 +41,7 @@ export default function Footer() {
               +94 123 456 789
             </a>
           </p>
-          
+
           <p className="flex items-center">
             <Mail className="mr-2" size={18} />
             <a
@@ -49,12 +57,15 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2">
-            {["Home", "About Us", "Destinations", "Packages", "Contact"].map((link) => (
-              <li
-                key={link}
-                className="flex items-center cursor-pointer hover:text-blue-600 transition-colors"
-              >
-                <span className="mr-2">{">"}</span> {link}
+            {quickLinks.map((link) => (
+              <li key={link.name} className="flex items-center">
+                <span className="mr-2">{">"}</span>
+                <Link
+                  to={link.path}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  {link.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -62,7 +73,9 @@ export default function Footer() {
 
         {/* Column 3: Newsletter & Social Media */}
         <div>
-          <p className="mb-4">Join our community to receive the latest updates and offers.</p>
+          <p className="mb-4">
+            Join our community to receive the latest updates and offers.
+          </p>
           <div className="flex mb-6">
             <input
               type="email"
@@ -111,7 +124,7 @@ export default function Footer() {
           href="https://corechipdigital.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className=" text-white hover:text-blue-600 transition-colors"
+          className="text-white hover:text-blue-600 transition-colors"
         >
           CoreChip Digital
         </a>

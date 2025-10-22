@@ -100,7 +100,7 @@ With years of expertise and a deep love for travel, we make sure every moment of
     </div>
     
   </div>
-  <Button text="Read More" link="#"  className="pt-[2px]"/>
+  <Button text="Read More" link="/AboutUs"  className="pt-[2px] "/>
  
 </motion.div>
 

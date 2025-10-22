@@ -11,7 +11,7 @@ export default function VideoBackgroundSection() {
     muted
     playsInline
   ></video>
-  <div className="absolute top-0 left-0 w-full h-full bg-black/30 -z-10"></div>
+  <div className="absolute top-0 left-0 w-full h-full bg-black/20 -z-10"></div>
   <div className="relative z-10 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8">
     <div className="text-center text-white">
       <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-snug drop-shadow-lg">

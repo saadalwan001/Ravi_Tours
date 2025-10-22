@@ -21,7 +21,8 @@ import {Link, useNavigate } from "react-router-dom";
   const handleLogout = () => {
     localStorage.removeItem("admin_token");
     localStorage.removeItem("admin_info");
-    navigate("/admin-login"); // redirect to login page
+    navigate("/admin-login"); 
+    window.location.reload();
   };
 
 
@@ -34,6 +35,7 @@ import {Link, useNavigate } from "react-router-dom";
         return () => window.removeEventListener("scroll", handleScroll);
 
     }, []);
+    
 
     
   return (

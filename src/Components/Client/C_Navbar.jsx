@@ -8,10 +8,13 @@ const C_Navbar = () => {
   const location = useLocation();
 
   const menuItems = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/AboutUs" },
-    { name: "Destinations", path: "/Destination" },
-    { name: "Packages", path: "/All_Packages" },
+    { name: "HOME", path: "/" },
+    { name: "GALLERY", path: "/Gallery" },
+    { name: "TOP DESTINATIONS", path: "/Destination" },
+    { name: "TOUR PACKAGES", path: "/All_Packages" },
+    { name: "OUR PROMISE", path: "/Promise" },
+    { name: "CONTACT US", path: "/Contact" },
+    { name: "ABOUT", path: "/AboutUs" },
     
   ];
 
@@ -55,14 +58,14 @@ const C_Navbar = () => {
 
           {/* Contact Button */}
           <Link
-            to="/contact"
+            to="/CustomizeTourPackage"
             className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
               scrolled
                 ? "bg-blue-600 text-white hover:bg-blue-700"
                 : "bg-white text-black hover:bg-gradient-to-r hover:bg-blue-700 hover:text-white"
             }`}
           >
-            Contact Us
+            Customize Your Package
           </Link>
         </nav>
 
@@ -101,7 +104,7 @@ const C_Navbar = () => {
           ))}
 
           <Link
-            to="/contact"
+            to="/CustomizeTourPackage"
             onClick={() => setNavOpen(false)}
             className={`block text-center px-4 py-2 rounded-full font-medium transition-all duration-300 ${
               scrolled
@@ -109,7 +112,7 @@ const C_Navbar = () => {
                 : "bg-white text-black hover:bg-blue-700 hover:text-white"
             }`}
           >
-            Contact Us
+            Customize Your Package
           </Link>
         </div>
       </div>
