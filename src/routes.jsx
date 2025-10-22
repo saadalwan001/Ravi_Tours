@@ -10,6 +10,7 @@ import Packages from "@/Packages/Packages.jsx";
 import Packages_Details from "@/Packages/PackageDetails.jsx";
 import Location from "@/Destination/Location.jsx";
 import Contact from "@/Contact/Contact.jsx";
+import Gallery from "@/Gallery/Gallery.jsx"
 
 //Admin Related Imports
 
@@ -127,6 +128,7 @@ export default function routes() {
         <Route path="/Packages/:id" element={<Packages_Details />} />
         <Route path="/Location/:id" element={<Location />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Gallery" element={<Gallery/>}/>
       </Routes>
     </>
   );
