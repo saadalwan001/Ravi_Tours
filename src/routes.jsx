@@ -10,7 +10,7 @@ import Packages from "@/Packages/Packages.jsx";
 import Packages_Details from "@/Packages/PackageDetails.jsx";
 import Location from "@/Destination/Location.jsx";
 import Contact from "@/Contact/Contact.jsx";
-import Gallery from "@/Gallery/Gallery.jsx"
+import Gallery from "@/Gallery/Gallery.jsx";
 
 //Admin Related Imports
 
@@ -24,6 +24,8 @@ import Admin_Attraction_Card from "./Admin/Admin_Attraction_Cards.jsx";
 import Admin_EditAttraction from "./Admin/Admin_Attraction_Edit.jsx";
 import Admin_Contact from "@/Admin/Admin_Contact_Page.jsx";
 import Admin_Profile from "@/Admin/Admin_Profile_Page.jsx";
+import Admin_Gallery_Upload from "@/Admin/Admin_Gallery_Upload.jsx";
+import Admin_Gallery_Cards from "./Admin/Admin_Gallery_Cards.jsx";
 
 export default function routes() {
   return (
@@ -117,6 +119,25 @@ export default function routes() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/admin-galleryupload"
+          element={
+            <ProtectedRoute>
+              <Admin_Gallery_Upload />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin-gallerycards"
+          element={
+            <ProtectedRoute>
+              <Admin_Gallery_Cards/>
+            </ProtectedRoute>
+          }
+        />
+
+
         <Route path="*" element={<Homepage />} />
         // Or a NotFound component
         {/*admin realted Routes Ending points */}
@@ -128,7 +149,7 @@ export default function routes() {
         <Route path="/Packages/:id" element={<Packages_Details />} />
         <Route path="/Location/:id" element={<Location />} />
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/Gallery" element={<Gallery/>}/>
+        <Route path="/Gallery" element={<Gallery />} />
       </Routes>
     </>
   );

@@ -1,49 +1,48 @@
-import React, {useState, useEffect} from "react";
-import {Menu, X} from "lucide-react";
-import {Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
+function Admin_Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
- function Admin_Nav() {
-    const[isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const navigate = useNavigate();
+  const navLinks = [
+    { name: "Tour Packages", href: "/admin-packcards" },
+    { name: "Attraction & Experience", href: "/admin-attraction/cards" },
+    { name: "Galleries", href: "/admin-gallerycards" },
+    { name: "Blogs", href: "/admin-all-blogs" },
+    { name: "Contact", href: "/admin-contact" },
+    { name: "Profile", href: "/admin-profile" },
+  ];
 
-    const navLinks = [
-        {name: "Tour Packages", href:"/admin-packcards"},
-        {name: "Attraction & Experience", href:"/admin-attraction/cards"},
-        {name: "Blogs", href:"/admin-all-blogs"},
-        {name: "Contact", href:"/admin-contact"},
-        {name: "Profile", href:"/admin-profile"},
-        
-    ];
-
-    // Logout function
+  // Logout function
   const handleLogout = () => {
     localStorage.removeItem("admin_token");
     localStorage.removeItem("admin_info");
-    navigate("/admin-login"); 
+    navigate("/admin-login");
     window.location.reload();
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
-    useEffect(()=>{
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-
-    }, []);
-    
-
-    
   return (
     <header
       className={`
         fixed top-0 w-full z-50 border-b
         transition-colors duration-300
-        ${scrolled ? "bg-transparent border-gray-300" : "bg-white border-transparent"}
+        ${
+          scrolled
+            ? "bg-transparent border-gray-300"
+            : "bg-white border-transparent"
+        }
         backdrop-blur-md
       `}
     >
@@ -54,7 +53,11 @@ import {Link, useNavigate } from "react-router-dom";
         </Link>
 
         {/* === DESKTOP NAVIGATION === */}
-        <nav className={`hidden md:flex space-x-8 transition-colors duration-300 ${scrolled ? "text-[#024360]" : "text-black"}`}>
+        <nav
+          className={`hidden md:flex space-x-8 transition-colors duration-300 ${
+            scrolled ? "text-[#024360]" : "text-black"
+          }`}
+        >
           {navLinks.map((link, idx) => (
             <Link
               key={idx}
@@ -78,7 +81,11 @@ import {Link, useNavigate } from "react-router-dom";
         {/* === MOBILE MENU TOGGLE === */}
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-            {isOpen ? <X size={24} color={scrolled ? "white" : "black"} /> : <Menu size={24} color={scrolled ? "white" : "black"} />}
+            {isOpen ? (
+              <X size={24} color={scrolled ? "white" : "black"} />
+            ) : (
+              <Menu size={24} color={scrolled ? "white" : "black"} />
+            )}
           </button>
         </div>
       </div>
@@ -110,6 +117,3 @@ import {Link, useNavigate } from "react-router-dom";
 }
 
 export default Admin_Nav;
-    
-
-
