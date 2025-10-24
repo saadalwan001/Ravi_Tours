@@ -26,6 +26,7 @@ import Admin_Contact from "@/Admin/Admin_Contact_Page.jsx";
 import Admin_Profile from "@/Admin/Admin_Profile_Page.jsx";
 import Admin_Gallery_Upload from "@/Admin/Admin_Gallery_Upload.jsx";
 import Admin_Gallery_Cards from "./Admin/Admin_Gallery_Cards.jsx";
+import Admin_Gallery_Edit from "./Admin/Admin_Gallery_Edit.jsx";
 
 export default function routes() {
   return (
@@ -133,6 +134,15 @@ export default function routes() {
           element={
             <ProtectedRoute>
               <Admin_Gallery_Cards/>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin-gallerycard-edit/:id"
+          element={
+            <ProtectedRoute>
+              <Admin_Gallery_Edit/>
             </ProtectedRoute>
           }
         />

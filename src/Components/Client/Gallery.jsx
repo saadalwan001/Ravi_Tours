@@ -1,31 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import api from "@/utlis/axios.js";
 import Button from "./../ui/Button.jsx";
 
-// Sample images
-import img1 from "../../../public/Gallery/Img1.jpg";
-import img2 from "../../../public/Gallery/Img2.jpg";
-import img3 from "../../../public/Gallery/Img3.jpg";
-import img4 from "../../../public/Gallery/Img4.jpg";
-import img5 from "../../../public/Gallery/Img5.jpg";
-import img6 from "../../../public/Gallery/Img6.jpg";
-import img7 from "../../../public/Gallery/Img7.jpg";
-
-const galleryImages = [
-  { id: 1, src: img1, alt: "Gallery image 1" },
-  { id: 2, src: img2, alt: "Gallery image 2" },
-  { id: 3, src: img3, alt: "Gallery image 3" },
-  { id: 4, src: img4, alt: "Gallery image 4" },
-  { id: 5, src: img5, alt: "Gallery image 5" },
-  { id: 6, src: img6, alt: "Gallery image 6" },
-  { id: 7, src: img7, alt: "Gallery image 7" },
-];
-
 export default function GallerySection() {
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        const res = await api.get("/gallery");
+
+        // Map API data and prepend full backend URL for images
+
+        // define baseUrl here
+        const baseUrl = import.meta.env.VITE_API_URL.replace(/\/api\/?$/, "")
+        const data = res.data.map((item) => ({
+          id: item.id,
+           src: `${baseUrl}/storage/${item.image_path}`, // uses .env base URL
+          title: item.title,
+          description: item.description,
+        }));
+
+        setGalleryImages(data);
+      } catch (err) {
+        console.error("Error fetching gallery:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGallery();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="py-16 text-center text-gray-600">Loading gallery...</div>
+    );
+  }
+
+  if (galleryImages.length === 0) {
+    return (
+      <div className="py-16 text-center text-gray-600">
+        No images available.
+      </div>
+    );
+  }
+
+  // Helper functions for consistent column layout
+  const getImg = (index) => galleryImages[index]?.src || "/fallback.jpg";
+  const getAlt = (index) => galleryImages[index]?.title || "";
+
   return (
     <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-[80px]">
       {/* Heading */}
       <div className="text-center mb-8">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4  md:text-7xl">Gallery</h2>
+        <h2 className="text-4xl font-bold text-gray-900 mb-4 md:text-7xl">
+          Gallery
+        </h2>
         <p className="text-gray-600 max-w-2xl mx-auto md:text-[20px]">
           A glimpse into breathtaking landscapes, rich culture, and unforgettable experiences. Explore the beauty of Sri Lanka via our lens.
         </p>
@@ -36,8 +68,8 @@ export default function GallerySection() {
         {/* Column 1 */}
         <div className="flex justify-center items-center md:h-[500px]">
           <img
-            src={galleryImages[0].src}
-            alt={galleryImages[0].alt}
+            src={getImg(0)}
+            alt={getAlt(0)}
             className="rounded-xl object-cover h-[250px] w-full transform transition-transform duration-300 hover:scale-105"
           />
         </div>
@@ -45,13 +77,13 @@ export default function GallerySection() {
         {/* Column 2 */}
         <div className="flex flex-col gap-4 md:h-[500px]">
           <img
-            src={galleryImages[1].src}
-            alt={galleryImages[1].alt}
+            src={getImg(1)}
+            alt={getAlt(1)}
             className="rounded-xl object-cover flex-1 w-full h-[250px] md:h-auto transform transition-transform duration-300 hover:scale-105"
           />
           <img
-            src={galleryImages[2].src}
-            alt={galleryImages[2].alt}
+            src={getImg(2)}
+            alt={getAlt(2)}
             className="rounded-xl object-cover flex-1 w-full h-[250px] md:h-auto transform transition-transform duration-300 hover:scale-105"
           />
         </div>
@@ -59,8 +91,8 @@ export default function GallerySection() {
         {/* Column 3 (Center) */}
         <div className="flex justify-center md:h-[500px]">
           <img
-            src={galleryImages[3].src}
-            alt={galleryImages[3].alt}
+            src={getImg(3)}
+            alt={getAlt(3)}
             className="rounded-xl object-cover h-[250px] w-full md:h-full transform transition-transform duration-300 hover:scale-105"
           />
         </div>
@@ -68,13 +100,13 @@ export default function GallerySection() {
         {/* Column 4 */}
         <div className="flex flex-col gap-4 md:h-[500px]">
           <img
-            src={galleryImages[4].src}
-            alt={galleryImages[4].alt}
+            src={getImg(4)}
+            alt={getAlt(4)}
             className="rounded-xl object-cover flex-1 w-full h-[250px] md:h-auto transform transition-transform duration-300 hover:scale-105"
           />
           <img
-            src={galleryImages[5].src}
-            alt={galleryImages[5].alt}
+            src={getImg(5)}
+            alt={getAlt(5)}
             className="rounded-xl object-cover flex-1 w-full h-[250px] md:h-auto transform transition-transform duration-300 hover:scale-105"
           />
         </div>
@@ -82,8 +114,8 @@ export default function GallerySection() {
         {/* Column 5 */}
         <div className="flex justify-center items-center md:h-[500px]">
           <img
-            src={galleryImages[6].src}
-            alt={galleryImages[6].alt}
+            src={getImg(6)}
+            alt={getAlt(6)}
             className="rounded-xl object-cover h-[250px] w-full transform transition-transform duration-300 hover:scale-105"
           />
         </div>

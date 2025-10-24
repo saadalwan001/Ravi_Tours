@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function GalleryGrid({ images, targetHeight = 200 }) {
+export default function GalleryGrid({ images, targetHeight = 300 }) {
   // Function to create justified rows
   const createJustifiedRows = (images) => {
     let rows = [];

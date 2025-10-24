@@ -83,7 +83,7 @@ const Admin_Gallery_Cards = () => {
                 {/* Actions */}
                 <div className="flex justify-between">
                   <button
-                    onClick={() => navigate(`/admin-editgallery/${img.id}`)}
+                    onClick={() => navigate(`/admin-gallerycard-edit/${img.id}`)}
                     className="flex items-center px-4 py-2 bg-[#1A5775] text-white rounded-lg hover:bg-[#024360] transition"
                   >
                     <Edit className="w-4 h-4 mr-2" />
