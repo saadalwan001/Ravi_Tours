@@ -96,7 +96,7 @@ export default function PackagesSection() {
 
       {/* Button at Bottom */}
       <div className="flex justify-center mt-12">
-        <Button text="Explore More" link="/packages" />
+        <Button text="Explore More" link="/All_Packages" />
       </div>
     </section>
   );
